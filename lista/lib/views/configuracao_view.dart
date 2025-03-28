@@ -1,0 +1,1 @@
+//classe das configurações
