@@ -52,7 +52,7 @@ class _TarefaViewState extends State<TarefaView> with SingleTickerProviderStateM
     } else if (index == 1) {
       // Já estamos na tela de lista
     } else if (index == 2) {
-      Navigator.pushNamed(context, '/infografico'); // Navegar para o infográfico
+      Navigator.pushNamed(context, '/Info'); // Navegar para o infográfico
     }
   }
 
@@ -113,7 +113,7 @@ class _TarefaViewState extends State<TarefaView> with SingleTickerProviderStateM
               child: IconButton(
                 icon: Icon(Icons.info, size: 40, color: Colors.blue),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/infografico'); // Navegar para o infográfico
+                  Navigator.pushNamed(context, '/Info'); // Navegar para o infográfico
                 },
               ),
             ),

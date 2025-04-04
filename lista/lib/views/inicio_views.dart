@@ -20,8 +20,9 @@ class _InicioState extends State<InicioViews> {
       Navigator.pushNamed(context, '/'); // Página inicial
     } else if (index == 1) {
       Navigator.pushNamed(context, '/lista'); // Tela da lista
+    } else if (index == 2) {
+      Navigator.pushNamed(context, '/Info'); // Navegar para Info
     }
-    // Você pode adicionar mais condições para outras telas
   }
 
   @override
@@ -38,33 +39,23 @@ class _InicioState extends State<InicioViews> {
               decoration: BoxDecoration(color: Colors.blue), // Cor do DrawerHeader
               child: Text("Menu", style: TextStyle(color: Colors.white)), // Texto do DrawerHeader em branco
             ),
-            // Definindo o tamanho de cada ícone no Drawer para ocupar 1/4 da largura
-            SizedBox(
-              width: MediaQuery.of(context).size.width / 4, // 1/4 da largura da tela
-              child: IconButton(
-                icon: Icon(Icons.home, size: 40, color: Colors.blue),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/'); // Navegar para a tela inicial
-                },
-              ),
+            ListTile(
+              title: Text("Tela Inicial"),
+              onTap: () {
+                Navigator.pushNamed(context, "/");
+              },
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width / 4, // 1/4 da largura da tela
-              child: IconButton(
-                icon: Icon(Icons.list, size: 40, color: Colors.blue),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/lista'); // Navegar para a tela da lista
-                },
-              ),
+            ListTile(
+              title: Text("Lista"),
+              onTap: () {
+                Navigator.pushNamed(context, "/lista");
+              },
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width / 4, // 1/4 da largura da tela
-              child: IconButton(
-                icon: Icon(Icons.info, size: 40, color: Colors.blue),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/infografico'); // Navegar para o infográfico
-                },
-              ),
+            ListTile(
+              title: Text("Tarefa Info"),
+              onTap: () {
+                Navigator.pushNamed(context, "/Info"); // Alterado para Info
+              },
             ),
           ],
         ),
@@ -82,9 +73,9 @@ class _InicioState extends State<InicioViews> {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, "/infografico");
+                Navigator.pushNamed(context, "/Info"); // Alterado para Info
               },
-              child: Text("Ir para o infográfico"),
+              child: Text("Ir para Tarefa Info"),
             ),
           ],
         ),
