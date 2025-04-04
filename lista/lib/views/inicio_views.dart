@@ -1,7 +1,4 @@
-//classe do inicio
-
 import 'package:flutter/material.dart';
-// Para a navegação para a tela de Lista
 
 // ignore: use_key_in_widget_constructors
 class InicioViews extends StatefulWidget {
@@ -32,31 +29,42 @@ class _InicioState extends State<InicioViews> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Tela Inicial"),
+        backgroundColor: Colors.blue, // Cor da AppBar
       ),
       drawer: Drawer(
         child: ListView(
           children: [
             DrawerHeader(
-              decoration: BoxDecoration(color: Colors.blue),
-              child: Text("Menu"),
+              decoration: BoxDecoration(color: Colors.blue), // Cor do DrawerHeader
+              child: Text("Menu", style: TextStyle(color: Colors.white)), // Texto do DrawerHeader em branco
             ),
-            ListTile(
-              title: Text("Tela Inicial"),
-              onTap: () {
-                Navigator.pushNamed(context, "/");
-              },
+            // Definindo o tamanho de cada ícone no Drawer para ocupar 1/4 da largura
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 4, // 1/4 da largura da tela
+              child: IconButton(
+                icon: Icon(Icons.home, size: 40, color: Colors.blue),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/'); // Navegar para a tela inicial
+                },
+              ),
             ),
-            ListTile(
-              title: Text("Lista"),
-              onTap: () {
-                Navigator.pushNamed(context, "/lista");
-              },
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 4, // 1/4 da largura da tela
+              child: IconButton(
+                icon: Icon(Icons.list, size: 40, color: Colors.blue),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/lista'); // Navegar para a tela da lista
+                },
+              ),
             ),
-            ListTile(
-              title: Text("Infográfico"),
-              onTap: () {
-                Navigator.pushNamed(context, "/infografico");
-              },
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 4, // 1/4 da largura da tela
+              child: IconButton(
+                icon: Icon(Icons.info, size: 40, color: Colors.blue),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/infografico'); // Navegar para o infográfico
+                },
+              ),
             ),
           ],
         ),
@@ -84,6 +92,9 @@ class _InicioState extends State<InicioViews> {
       // BottomNavigationBar no Scaffold para ficar fixada na parte inferior
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
+        backgroundColor: Colors.blue, // Cor da BottomNavigationBar
+        selectedItemColor: Colors.white, // Cor do item selecionado na BottomNavigationBar
+        unselectedItemColor: Colors.white70, // Cor dos itens não selecionados
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
