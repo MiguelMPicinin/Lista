@@ -74,9 +74,9 @@ class _InicioState extends State<InicioViews> {
                 label: 'Info',
               ),
             ]),
-          ],
+          ],  
         ),
-      ),
+      ), 
     );
   }
 }
