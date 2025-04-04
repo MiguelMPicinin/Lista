@@ -1,5 +1,3 @@
-//classe da lista
-
 import 'package:flutter/material.dart';
 
 // Ignore a anotação, pois você irá alterar o nome da classe de TarefaScreen para TarefaView
@@ -37,38 +35,58 @@ class _TarefaViewState extends State<TarefaView> {
     });
   }
 
+  // Controla a navegação da BottomNavigationBar
+  int _selectedIndex = 1;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+
+    // Navegar para as telas correspondentes
+    if (index == 0) {
+      Navigator.pushNamed(context, '/'); // Navegar para a tela inicial
+    } else if (index == 1) {
+      // Já estamos na tela de lista
+    } else if (index == 2) {
+      Navigator.pushNamed(context, '/infografico'); // Navegar para o infográfico
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Tarefas'),
       ),
-      drawer: Drawer(child: ListView(
-        children: [
-          DrawerHeader(
-            decoration: BoxDecoration(color: Colors.blue),
-            child: Text("Menu"),
-          ),
-          ListTile(
-            title: Text("Tela Inicial"),
-            onTap: () {
-              Navigator.pushNamed(context, "/");
-            },
-          ),
-          ListTile(
-            title: Text("Lista"),
-            onTap: () {
-              Navigator.pushNamed(context, "/lista");
-            },
-          ),
-          ListTile(
-            title: Text("Infográfico"),
-            onTap: () {
-              Navigator.pushNamed(context, "/infografico");
-            },
-          ),
-        ],
-      ),),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(color: Colors.blue),
+              child: Text("Menu"),
+            ),
+            ListTile(
+              title: Text("Tela Inicial"),
+              onTap: () {
+                Navigator.pushNamed(context, "/");
+              },
+            ),
+            ListTile(
+              title: Text("Lista"),
+              onTap: () {
+                Navigator.pushNamed(context, "/lista");
+              },
+            ),
+            ListTile(
+              title: Text("Infográfico"),
+              onTap: () {
+                Navigator.pushNamed(context, "/infografico");
+              },
+            ),
+          ],
+        ),
+      ),
       body: Column(
         children: [
           // Campo para adicionar tarefa
@@ -83,7 +101,7 @@ class _TarefaViewState extends State<TarefaView> {
             onPressed: adicionarTarefa,
             child: Text('Adicionar Tarefa'),
           ),
-          
+
           // Lista de tarefas pendentes
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -120,23 +138,27 @@ class _TarefaViewState extends State<TarefaView> {
               },
             ),
           ),
-                    BottomNavigationBar(items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.list),
-                label: 'Lista',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.info),
-                label: 'Info',
-              ),
-            ]),
         ],
       ),
-      
+      // Colocando a BottomNavigationBar no final da tela
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            label: 'Lista',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.info),
+            label: 'Info',
+          ),
+        ],
+        onTap: _onItemTapped, // Função para navegar
+      ),
     );
   }
 }
